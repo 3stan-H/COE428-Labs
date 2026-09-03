@@ -1,0 +1,39 @@
+1. For this lab, I implemented Insertion Sort and Merge Sort based on the mySort() function interface. Both algorithms were implemented using the 
+provided metric methods to track the number of comparisons, moves, and swaps performed during sorting. After testing each algorithm, there are 
+currently no known bugs on the files and compiles successfully. 
+
+2. For both sorting methods, the number of swaps is 0 since insertion sort does not need any swaps. Merge sort uses temporary 
+arrays and does not use swaps either. 
+
+For insertion sort's number of comparisons worst case, the formula is n(n-1)/2. This is because the comparisons are in the while loop which will 
+run n - 1 times. In the worst iteration, the while loop runs n times. This causes the series to be n(n-1)/2. 
+For the best case, the formula is n - 1. This is because the while loop will iterate n - 1 times since it only needs to check and not to sort. 
+For the average case, the formula is n(n-1)/4. This is because the while loop will run on an average of j/2 times since on average half of the 
+elements in the array, array[j] will be > array[j + 1].
+
+For insertion sort, the formula for number of copy operations in the worst case is (n-1)(n+4)/2. To get this, we can see that the 
+first copy will pass n - 1 times. The while loop (inner) will run j times since this is the worst case. The total of this will be counted 
+n - 1 (outer) times starting from j = 1. The series for that is n(n-1)/2. The last copy also runs n - 1 times meaning the total will be 2(n-1) + 
+n(n-1)/2 which simplifies  to (n-1)(n+4)/2. 
+In the best case, the formula will be 2(n-1). This is because the first and last copy will interate n - 1 times while the while loops copy will 
+not run.
+In the average case, the formula will be n(n-1)/4 + 2(n-1). This is because the while loop will run on an average of j/2 times since on average 
+half of the elements in the array, array[j] will be > array[j + 1].
+
+For merge sort, the formula will be nlog_2(n) - n + 1 for comparisons in the worst case. Each level of the recursion tree processes n elements 
+total, and there are log2(n) levels, so that gives n log2(n) comparisons. However, since the comparisons are inside the while loop: 
+(i <= mid && j <= last), we know that it will keep sorting and it will run until all units except one are sorted.
+After that, we need to find out how many times this is called. Based on the recursion tree, the merge function will be called n - 1 times. 
+So we need to subtract from the total, nlog_2(n), by how many times the while loop will run until one element is left which is n - 1 times.
+For the best case, the formula is nlog_2(n)/2 since if one half of elements are all smaller than the other, that side will empty immediately 
+without any further checks. This means it happens each time for the combination process which means each call will have a cost of n/2. For
+the average case where numbers are randomly interleaved, on average the merge loop will run about n times which will lead to a formula
+of nlog_2(n). Similarly to the worst case, the comparisons are inside the merge function which is called n - 1 times. This gives us a formula
+closer to the worst case which is nlog_2(n) - n + 1. All cases are still nlog_2(n) as the parent function.
+
+For merge sorts number of copies, the formula is 2nlog_2(n). For starters, the function has to copy everything into a temporary array n times, then 
+copy the sorted temporary array back which is another n times. This happens accross nlog_2(n) levels which means that the formula is 2nlog_2(n) for 
+all cases since merge sort always performs the same sequence of merge operations regardless of input order.
+
+For both cases, if n is a number that gives decimals in log_2(n), then the result of that is rounded up to the nearest integer. 
+
