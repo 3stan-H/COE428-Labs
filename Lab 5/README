@@ -1,0 +1,46 @@
+Everything works well and no issues were found.
+
+Question: 
+Another legal XML tag not used in this lab is the "stand-alone" tag. 
+This kind of tag combines both a start-tag and end-tag in one. It is 
+identified with a '/'(slash) preceding the final >. (For example, the 
+<foo/> is a stand-alone tag that is "self balancing".
+Describe briefly how you would modify Requirement 1 to allow this kind 
+of tag. 
+
+Answer:
+To support the stand alone XML tags, I should modify my algorithm to 
+take it into account. When reading a tag, if it is detected that the tag 
+ends with />, it should be treated as self-balancing. This means that 
+no push or pop operation should be performed on the stack. The algorithm 
+would simply move onto processing the next input. This means that 
+stand-along tags will not affect the stack and will not cause any 
+mismatches when validating XML structure. 
+
+Specifically, in this section of code where the reading of the contents 
+after < and/or </ happens:
+
+while (isalpha(ch)) { 
+			tag[i++] = ch; 
+			ch = getchar(); 
+		}
+		tag[i] = '\0'; //marks the end of the string
+
+		if (isEnd) { //non 0 to be true
+			char *topTag = pop(); 
+			if (topTag == NULL || strcmp(topTag, tag) != 0) { 
+			printf("Invalid XML\n");
+			exit(0);
+			}
+		} else {
+		char *copy = malloc(strlen(tag) + 1); 
+		strcpy(copy, tag); 
+		push(copy); 
+		}
+	}
+	
+I can add a section where it checks the next char after all the 
+alphabetical letters are checked, then have a conditional statement 
+where it skips through all the stack operations. 
+
+
