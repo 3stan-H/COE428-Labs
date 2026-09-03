@@ -1,0 +1,14 @@
+Tristan Hsiung 501311581 Lab 1
+
+If a better sort function was given, it could be implemented in the 
+mySort.c file. This is because mySort already recieves the same parameters
+as the betterSort function. The function can be implemented as below.
+
+void mySort(int data[], unsigned int n) {
+        betterSort(data, 0, n);
+    }
+    
+It is worth noting that the n does not need to be subtracted by one since
+it is taken into account in the main file. This allows mySort to keep 
+its signature function while taking advantage of the more efficient 
+sorting algorithm provided.
