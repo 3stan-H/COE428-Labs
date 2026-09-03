@@ -43,4 +43,4 @@ Part 1: implemented a string Stack (`push`, `pop`, `isEmpty`) in C to validate w
 ## Notes
 
 - Labs progress from core C fundamentals and debugging practices (Labs 1–2) through algorithm implementation and empirical/theoretical analysis (Lab 3), to more substantial data structure and simulation projects (Labs 4–5).
-- Each lab's `README.md` includes required write-up answers (e.g. complexity analysis, recursion trace questions) as specified in that lab's manual, in addition to implementation notes.
+- Each lab's `README` includes required write-up answers (e.g. complexity analysis, recursion trace questions) as specified in that lab's manual, in addition to implementation notes.
